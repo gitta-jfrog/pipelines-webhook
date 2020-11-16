@@ -1,13 +1,13 @@
 resources:
-  - name:       from_artifactory
-    type:       IncomingWebhook
+  - name: from_artifactory
+    type: IncomingWebhook
     configuration:
       webhookName: from_artifactory
  
 pipelines:
-  - name: ExamplePipeline
+  - name: basic_pipeline
   - steps:
-    - name: ExampleStep
+    - name: step_1
       type: Bash
       configuration:
         inputResources:
