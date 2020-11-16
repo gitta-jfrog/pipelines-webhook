@@ -5,7 +5,7 @@ resources:
       webhookName: from_artifactory
  
 pipelines:
-  - name: basic_pipeline
+  - name: basic_pipeline_webhook
   - steps:
     - name: step_1
       type: Bash
