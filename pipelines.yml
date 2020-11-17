@@ -12,7 +12,16 @@ pipelines:
       configuration:
         inputResources:
           - name: from_artifactory
+        integrations:
+           - name: myArtifactory
       execution:
           onExecute:
             - echo "$res_from_artifactory_payload" | jq '.' > payload.json
-            - read_json payload.json "LESSER_SECRET_FORMULA"
+            - read_json payload.json "data.path"
+            - retry_command jfrog rt config --url $int_myArtifactory_url --user $int_myArtifactory_user --apikey $int_myArtifactory_apikey --interactive=false
+            
+          
+          
+          
+
+
