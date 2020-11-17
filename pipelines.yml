@@ -20,7 +20,7 @@ pipelines:
             - file_path="read_json payload.json 'data.path'"
             - file_repo="read_json payload.json 'data.repo_key'"
             - retry_command jfrog rt config --url $int_myArtifactory_url --user $int_myArtifactory_user --apikey $int_myArtifactory_apikey --interactive=false
-            - jfrog rt dl $file_repo/$file_path .
+            - jfrog rt dl "${file_repo}/${file_path}" .
             - ls -la
             
           
