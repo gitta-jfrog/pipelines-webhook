@@ -22,7 +22,7 @@ pipelines:
             - file_repo=$(read_json payload.json 'data.repo_key')
             - downloadfile="${file_repo}/${file_path}"
             - echo $downloadfile
-            - jfrog rt dl downloadfile .
+            - jfrog rt dl $downloadfile .
             - ls -la
             
           
