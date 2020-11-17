@@ -17,10 +17,12 @@ pipelines:
       execution:
           onExecute:
             - echo "$res_from_artifactory_payload" | jq '.' > payload.json
-            - filepath = read_json payload.json "data.path"
-            - filerepo = read_json payload.json "data.repo_key"
+            - export FILE_PATH= read_json payload.json "data.path"
+            - export FILE_REPO= read_json payload.json "data.repo_key"
             - retry_command jfrog rt config --url $int_myArtifactory_url --user $int_myArtifactory_user --apikey $int_myArtifactory_apikey --interactive=false
-            - jfrog rt dl $filerepo/ generic-repo/
+            - download_file="$FILE_REPO/$FILE_PATH"
+            - jfrog rt dl $download_file .
+            - ls -la
             
           
           
